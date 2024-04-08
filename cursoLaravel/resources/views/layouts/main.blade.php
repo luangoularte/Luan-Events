@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" href="/css/styles.css">
 
-        <script src="/js/scripts.js"></script>
+        <script src="../../../public/js/script.js"></script>
         <title>@yield('title')</title>
     </head>
     <body>
@@ -49,7 +49,6 @@
                 </div>
             </div>
         </main>
-        @yield('content')
         <footer>
             <p>HDC Events &copy; 2020</p>
         </footer>
