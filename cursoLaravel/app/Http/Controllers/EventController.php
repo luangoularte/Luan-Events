@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Models\Event_user;
 
 class EventController extends Controller
 {
@@ -84,6 +85,8 @@ class EventController extends Controller
 
     public function destroy($id) {
 
+        Event_user::where('event_id', $id)->delete();
+
         Event::findOrFail($id)->delete();
 
         return redirect('/dashboard')->with('msg', "Evento excluído com sucesso!");
@@ -131,12 +134,23 @@ class EventController extends Controller
 
         $event = Event::findOrFail($id);
 
-        if ($user->eventsAsParticipant->where('event_id', $event->id)->exists()) {
+        if ($user->eventsAsParticipant()->where('event_id', $event->id)->exists()) {
             return redirect('/dashboard')->with('msg', 'Você já está participando deste evento.');
         }
-        
-        $user->eventsAsParticipant->attach($id);
 
-        return redirect('/dashboard')->with('msg', 'Sua presença está confirmada no evento ' . $event->title);
+        $user->eventsAsParticipant()->attach($id);
+
+        return redirect('/dashboard')->with('msg', 'Sua presença está confirmada no evento: ' . $event->title);
+    }
+
+    public function leaveEvent($id) {
+
+        $user = auth()->user();
+
+        $user->eventsAsParticipant()->detach($id);
+
+        $event = Event::findOrFail($id);
+
+        return redirect('/dashboard')->with('msg', 'Você saiu com sucesso do evento: ' . $event->title);
     }
 }

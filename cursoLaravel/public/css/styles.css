@@ -208,12 +208,11 @@ header {
     margin-top: 30px;
 }
   
-  .dashboard-events-container th {
+ th {
     width: 25%;
-    
 }
   
-  .dashboard-events-container form {
+.dashboard-events-container form {
     display: inline-block;
 }
 
