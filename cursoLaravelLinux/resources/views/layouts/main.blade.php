@@ -37,12 +37,12 @@
                         <li class="nav-item">
                             <form action="/logout" method="post">
                                 @csrf 
-                                <button href="/logout"
+                                <a href="/logout"
                                 class="nav-link"
                                 onclick="event.preventDefault();
                                 this.closest('form').submit();">
                                 Sair
-                                </button>
+                                </a>
                             </form>
                         </li>
                         @endauth
