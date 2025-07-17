@@ -4,13 +4,35 @@
 
 @section('content')
 
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+
 <div id="event-create-container" class="col-md-6 offset-md-3">
-  <h1>Crie o seu evento</h1>
+  <h1>Criar Evento</h1>
   <form action="/events" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="image">Imagem do Evento:</label>
-            <input type="file" class="form-control-file" id="image" name="image" required>
+            <div class="image-wrapper">
+                <img
+                    src="{{ asset('img/logo-events.png') }}"
+                    alt="imagem evento"
+                    class="event-image"
+                    id="imagemProduto"
+                >
+
+                <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    accept="image/*"
+                    style="display: none"
+                    onchange="handleImageChange(event)"
+                >
+
+                <div class="image-overlay" onclick="document.getElementById('image').click()">
+                    <span class="mdi mdi-tools" style="font-size: 30px;"></span>
+                    <span class="overlay-text">Alterar imagem</span>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="title">Evento:</label>
@@ -53,8 +75,84 @@
                 <input type="checkbox" name="items[]" value="Brindes"> Brindes
             </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Criar Evento">
+        <div class="d-flex">
+            <input type="submit" class="btn btn-primary" value="Criar Evento">
+        </div>
     </form>
 </div>
 
 @endsection
+
+
+<script>
+
+function handleImageChange(event) {
+    const input = event.target;
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('imagemProduto').src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+
+<style>
+
+.image-wrapper {
+    position: relative;
+    width: fit-content;
+    display: inline-block;
+}
+
+.event-image {
+    display: block;
+    width: 300px; 
+    transition: filter 0.5s ease;
+    border-radius: 15px;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(216, 216, 216, 0.48); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.image-wrapper:hover .event-image {
+    filter: blur(2px);
+}
+
+.image-wrapper:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.overlay-text {
+    font-weight: bold;
+}
+
+.btn-primary {
+    margin: 0px !important;
+}
+
+.d-flex {
+    justify-content: end;
+}
+</style>
