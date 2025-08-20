@@ -32,14 +32,14 @@ Este projeto é um exemplo de sistema web desenvolvido em **Laravel 11** com **J
 ```bash
 git clone https://github.com/luangoularte/Luan-Events.git
 cd Luan-Events
-
+```
 2. Instale as dependências:
-
+```bash
 composer install
 npm install && npm run dev
-
+```
 3. Configure o .env:
-
+```bash
 cp .env.example .env
 php artisan key:generate
 
@@ -49,13 +49,14 @@ php artisan key:generate
 
 - Crie o arquivo do banco, se não existir:
     touch database/database.sqlite
-
+```
 4. Rode as migrations:
-
+```bash
 php artisan migrate
-
+```
 5. Inicie o servidor local:
-
+```bash
 php artisan serve
 
 Acesse o sistema em http://127.0.0.1:8000
+```
