@@ -47,7 +47,7 @@
         <p>Não foi possível encontar nenhum evento com "{{ $search }}". <a href="/">Ver todos</a></p>
     @elseif (count($events) == 0)
         <div style="justify-content: center; text-align: center;">
-            <img src="/img/no-events.png" alt="Sem Eventos" style="color: black;">
+            <img src="/img/no-events.png" alt="Sem Eventos" style="color: black; width: 10vw;">
             <p>NÃO HÁ EVENTOS DISPONÍVEIS</p>
         </div>
     @endif
