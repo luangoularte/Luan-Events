@@ -8,7 +8,7 @@
     <h1>Pesquisar evento</h1>
     <form action="/" method="GET" class="form-welcome">
         <input type="text" id="search" name="search" class="form-control" style="border-radius: 10px;" placeholder="Procurar...">
-        <input type="submit" class="btn btn-primary" style="padding: 1px 24px;" value="Pesquisar">
+        <input type="submit" class="btn btn-primary" style="padding: 1px 24px; overflow: unset" value="Pesquisar">
     </form>
 </div>
 <div id="events-container" class="col-md-12">
@@ -29,7 +29,9 @@
                     </div>
                     <div class="event-info-modern">
                         <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
-                        <h5 class="card-title">{{ $event->title }}</h5>
+                        <a href="/events/{{ $event->id }}" style="text-decoration: none;">
+                            <h5 class="card-title">{{ $event->title }}</h5>
+                        </a>
                         <p class="card-city">{{ $event->city }}</p>
                         <p class="card-participants">
                             {{ count($event->users) }} 

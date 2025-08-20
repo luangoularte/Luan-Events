@@ -13,47 +13,46 @@
 
         <link rel="stylesheet" href="/css/styles.css">
 
+        <link rel="icon" type="image/png" href="/img/favicon.ico">
+
         <script src="../../../public/js/script.js"></script>
         <title>@yield('title')</title>
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbar">
+            <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="container">
                     <a href="/" class="navbar-brand">
-                    <img src="/img/logo-event-sem-fundo.png"  alt="Luan Events">
+                        <img src="/img/logo-event-sem-fundo.png" alt="Luan Events">
                     </a>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">Eventos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/events/create" class="nav-link">Criar Eventos</a>
-                        </li>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                </div>
+                <div class="collapse navbar-collapse pr-3" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="/" class="nav-link">Eventos</a></li>
+                        <li class="nav-item"><a href="/events/create" class="nav-link">Criar Eventos</a></li>
+
                         @auth
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">Meus eventos</a>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/logout" method="post">
-                                @csrf 
-                                <a href="/logout"
-                                class="nav-link"
-                                onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                                Sair
-                                </a>
-                            </form>
-                        </li>
+                            <li class="nav-item"><a href="/dashboard" class="nav-link">Meus eventos</a></li>
+                            <li class="nav-item">
+                                <form action="/logout" method="post" class="form-inline m-0 p-0">
+                                    @csrf
+                                    <a href="/logout" class="nav-link"
+                                    onclick="event.preventDefault(); this.closest('form').submit();">Sair</a>
+                                </form>
+                            </li>
                         @endauth
+
                         @guest
-                        <li class="nav-item">
-                            <a href="/login" class="nav-link">Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/register" class="nav-link">Cadastrar</a>
-                        </li>
+                            <li class="nav-item"><a href="/login" class="nav-link">Entrar</a></li>
+                            <li class="nav-item"><a href="/register" class="nav-link">Cadastrar</a></li>
                         @endguest
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -62,6 +61,8 @@
                 <div class="row">
                     @if(session('msg'))
                         <p class="msg">{{ session('msg') }}</p>
+                    @elseif(session('alert'))
+                        <p class="msg-alert">{{ session('alert') }}</p>
                     @endif
                     @yield('content')
                 </div>

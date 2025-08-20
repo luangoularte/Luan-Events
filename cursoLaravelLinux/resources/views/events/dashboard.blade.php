@@ -24,7 +24,11 @@
             @foreach($events as $event)
             <tr>
                 <td scope="row">{{ $loop->index + 1 }}</td>
-                <td><a href="/events/ {{ $event->id }}">{{ $event->title }}</a> </td>
+                <td>
+                    <a href="/events/{{ $event->id }}" style="text-decoration: none;">
+                        <p class="card-title" style="font-size: 16px; margin: 0;">{{ $event->title }}</p>
+                    </a>
+                </td>
                 <td> {{ count($event->users) }} </td>
                 <td>
                     <a href="/events/edit/{{ $event->id }}" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
@@ -62,13 +66,21 @@
             @foreach($eventsAsParticipant as $event)
             <tr>
                 <td scope="row">{{ $loop->index + 1 }}</td>
-                <td><a href="/events/ {{ $event->id }}">{{ $event->title }}</a> </td>
+                <td>
+                    <a href="/events/{{ $event->id }}" style="text-decoration: none;">
+                        <p class="card-title" style="font-size: 16px; margin: 0;">{{ $event->title }}</p>
+                    </a>
+                </td>
                 <td> {{ count($event->users) }} </td>
                 <td>
                     <form action="/events/leave/{{ $event->id }}" method="post">
                         @csrf 
                         @method("DELETE")
-                        <button type="submit" class="btn btn-danger delete-btn">
+                        <button 
+                            type="submit" 
+                            class="btn btn-danger delete-btn"
+                            style="width: 50%;"
+                        >
                             <ion-icon name="trash-outline"></ion-icon>
                             Sair do Evento
                         </button>

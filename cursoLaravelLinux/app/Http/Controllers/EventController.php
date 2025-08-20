@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\User;
 use App\Models\Event_user;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -38,20 +41,31 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->items = $request->items;
 
+        $currentDate = Carbon::today();
+        $requestDate = Carbon::createFromFormat('Y-m-d', $request->date);
+
+        if ($requestDate <= $currentDate) {
+            return redirect('/events/create')->with('alert', 'Data Inválida')->withInput();
+        }
 
         // image upload
-        if($request->hasfile('image') && $request->file('image')->isValid()) {
-
-            $requestImage = $request->image;
+        $imageName = null;
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->file('image');
 
             $extension = $requestImage->extension();
-            
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now') . '.' .$extension);
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . $extension;
 
             $requestImage->move(public_path('img/events'), $imageName);
-
-            $event->image = $imageName;
         }
+
+        if (!isset($imageName)) {
+            $defaultImagePath = public_path('img/logo-events.png');
+            $imageName = md5('default' . strtotime('now')) . '.png';
+            File::copy($defaultImagePath, public_path('img/events/' . $imageName));
+        }
+
+        $event->image = $imageName;
 
         $user = auth()->user();
         $event->user_id = $user->id;

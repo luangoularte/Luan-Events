@@ -1,5 +1,5 @@
 * {
-    font-family: 'roboto';
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
 }
 
 body {
@@ -73,6 +73,17 @@ header {
     animation: fadeOut 0.5s ease-in-out 4s forwards;
 }
 
+.msg-alert {
+    background-color: #edd4d4;
+    color: #571515;
+    border: 1px solid #e6c3c3;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+    animation: fadeOut 0.5s ease-in-out 4s forwards;
+}
+
 
 @keyframes fadeOut {
     to {
@@ -91,7 +102,7 @@ header {
 #navbar {
     justify-content: space-between;
     background-color: #FFF;
-    padding: 5px 0;
+    padding: 10px 0;
 }
 
 #navbar a {
@@ -106,20 +117,35 @@ header {
 
 /* Search Container */
 #search-container {
-    background-image: url("../img/banner.jpg");
+    position: relative;
+    background-image: url("../img/banner-4.jpg");
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 30vh;
     padding: 50px;
     text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+
+#search-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: -1;
 }
 
 #search-container h1 {
-    color: #2C73D2;
+    color: #ffffff;
     margin-bottom: 30px;
     font-weight: 900;
-    font-size: 3rem;              
-    text-shadow: 1px 1px 3px rgba(44, 115, 210, 0.4); /* sombra suave azul */
+    font-size: 3rem;   
+    text-shadow: 1px 1px 3px rgba(44, 115, 210, 0.4); 
 }
 
 
@@ -174,10 +200,15 @@ header {
 }
 
 .card-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #2C73D2;
     margin: 10px 0 6px;
+}
+
+.card-title:hover {
+    color: #757575;
+    transition: 0.5s;
 }
 
 .card-date,
@@ -204,13 +235,10 @@ header {
 }
 
 /* Event page */
-#image-container,
-#info-container {
-  margin-top: 30px;
-}
 
 #image-container img {
   border-radius: 10px;
+  height: 50vh;
 }
 
 #info-container h1 {
@@ -266,6 +294,21 @@ header {
 .dashboard-events-container form {
     display: inline-block;
 }
+
+/* Meus eventos */
+
+.table thead {
+    background-color: #f0f4f8;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.table tbody tr:hover {
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+
 
 /* Edit page */
 
