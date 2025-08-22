@@ -26,6 +26,25 @@ Este projeto é um exemplo de sistema web desenvolvido em **Laravel 11** com **J
 - Componentes dinâmicos com Livewire
 - CRUD completo de eventos
 
+---
+
+## 📸 Telas do Sistema
+
+- **Login / Registro**
+  ![Login](docs/screenshots/tela-login.png)
+
+  - **Dashboard Principal**
+  ![Dashboard](docs/screenshots/dash.png)
+
+  - **Listagem de Eventos**
+  ![Lista de Eventos](docs/screenshots/lista-eventos.png)
+
+  - **Cadastro de Evento**
+  ![Cadastro](docs/screenshots/tela-criar-evento.png)
+
+  - **Edição de Evento**
+  ![Edição](docs/screenshots/tela-evento.png)
+
 ## ⚙️ Como rodar localmente
 
 1. Clone o repositório:
@@ -45,7 +64,7 @@ php artisan key:generate
 
 - Configure SQLite no .env:
     DB_CONNECTION=sqlite
-    DB_DATABASE=/caminho/para/database/database.sqlite
+    DB_DATABASE=./database/database.sqlite
 
 - Crie o arquivo do banco, se não existir:
     touch database/database.sqlite
