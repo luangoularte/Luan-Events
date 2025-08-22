@@ -31,19 +31,30 @@ Este projeto é um exemplo de sistema web desenvolvido em **Laravel 11** com **J
 ## 📸 Telas do Sistema
 
 - **Login / Registro**
-  ![Login](docs/screenshots/tela-login.png)
+<p align="center">
+<img src="docs/screenshots/tela-login.png" alt="Login" width="600">
+</p>
 
-  - **Dashboard Principal**
-  ![Dashboard](docs/screenshots/dash.png)
 
-  - **Listagem de Eventos**
-  ![Lista de Eventos](docs/screenshots/lista-eventos.png)
+- **Dashboard Principal**
+<p align="center">
+  <img src="docs/screenshots/dash.png" alt="Dashboard" width="600">
+</p>
 
-  - **Cadastro de Evento**
-  ![Cadastro](docs/screenshots/tela-criar-evento.png)
+- **Listagem de Eventos**
+<p align="center">
+  <img src="docs/screenshots/lista-eventos.png" alt="Lista de Eventos" width="600">
+</p>
 
-  - **Edição de Evento**
-  ![Edição](docs/screenshots/tela-evento.png)
+- **Cadastro de Evento**
+<p align="center">
+  <img src="docs/screenshots/tela-criar-evento.png" alt="Cadastro" width="600">
+</p>
+
+- **Edição de Evento**
+<p align="center">
+  <img src="docs/screenshots/tela-evento.png" alt="evento" width="600">
+</p>
 
 ## ⚙️ Como rodar localmente
 
