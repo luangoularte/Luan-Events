@@ -87,10 +87,12 @@ header {
 
 
 @keyframes fadeOut {
-    to {
+    0% {
+        opacity: 1;
+    }
+    100% {
         opacity: 0;
-        transform: translateY(-100px);
-        visibility: hidden;
+        display: none; 
     }
 }
 

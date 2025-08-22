@@ -35,17 +35,41 @@
         <div class="col-md-7">
             <div class="form-group">
                 <label for="title">Evento:</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Nome do evento" value="{{ old('title', $event->title ?? '') }}" required>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="title" 
+                    name="title" 
+                    placeholder="Nome do evento" 
+                    value="{{ old('title', $event->title ?? '') }}" 
+                    required
+                >
             </div>
             <div class="form-group pt-2">
                 <label for="date">Data do evento:</label>
-                <input type="date" class="form-control" id="date" name="date" value="{{ old('date', isset($event) ? date('Y-m-d', strtotime($event->date)) : '') }}" required>
+                <input 
+                    type="date" 
+                    class="form-control" 
+                    id="date" name="date" 
+                    value="{{ 
+                        old('date', isset($event) ? 
+                        date('Y-m-d', strtotime($event->date)) : '') 
+                    }}" 
+                    required>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label for="title">Cidade:</label>
-        <input type="text" class="form-control" id="city" name="city" placeholder="Local do evento" value="{{ old('city', $event->city ?? '') }}" required>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="city" 
+            name="city" 
+            placeholder="Local do evento" 
+            value="{{ old('city', $event->city ?? '') }}" 
+            required
+        >
     </div>
     <div class="form-group">
         <label for="title">O evento é privado?</label>
@@ -66,13 +90,22 @@
     </div>
     <div class="form-group">
         <label for="title">Descrição:</label>
-        <textarea name="description" id="description" class="form-control" placeholder="O que vai acontecer no evento?" required>{{ old('description', $event->description ?? '') }}</textarea>
+        <textarea 
+            name="description" 
+            id="description" 
+            class="form-control" 
+            placeholder="O que vai acontecer no evento?" 
+            required
+            style="height: 10vh;"
+        >
+            {{ old('description', $event->description ?? '') }}
+        </textarea>
     </div>
     <div class="form-group">
         <label for="title">Adicione itens de infraestrutura:</label>
         @php
             $infraestruturas = ['Cadeiras', 'Palco', 'Open drink', 'Open food', 'Brindes'];
-            $selecionados = old('items', []);
+            $selecionados = old('items', $event->items ?? []);
         @endphp
 
         @foreach ($infraestruturas as $item)
